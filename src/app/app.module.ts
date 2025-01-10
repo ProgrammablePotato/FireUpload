@@ -1,18 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppRoutingModule           } from './app-routing.module';
+import { AppComponent               } from './app.component';
+import { NgbModule                  } from '@ng-bootstrap/ng-bootstrap';
+import { UploadFormComponent        } from './upload-form/upload-form.component';
+import { UploadListComponent        } from './upload-list/upload-list.component';
+import { FormsModule                } from '@angular/forms';
+import { AngularFireModule          } from '@angular/fire/compat';
+import { AngularFireStorageModule   } from '@angular/fire/compat/storage';
+import { AngularFireDatabaseModule  } from '@angular/fire/compat/database';
+import { provideHttpClient          } from '@angular/common/http';
+import { environments               } from './config/environments';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UploadFormComponent,
+    UploadListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environments.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
