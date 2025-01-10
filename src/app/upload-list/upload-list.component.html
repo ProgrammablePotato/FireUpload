@@ -1,6 +1,6 @@
 <div *ngFor="let file of files" class="row">
     <div class="col">
-        <a [href]="file.url">{{file.filename.substring(29)}}</a>
+        <a [href]="file.url">{{file.filename.substring(20)}}</a>
     </div>
     <div class="col my-1">
         <button (click)="deleteFile(file)" class="btn btn-danger " type="button">Delete fowever UmU</button>

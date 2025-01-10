@@ -20,9 +20,10 @@ export class UploadService {
   }
 
   uploadFile(file:any){
-    const filename = this.path+"/"+Date.now()+"-"+(Math.round(Math.random()*89999+10000))+"-"+file.name
-    const uploadTask = this.storage.upload(filename,file)
-    const storageRef = this.storage.ref(filename)
+    const filename = Date.now()+"-"+(Math.round(Math.random()*89999+10000))+"-"+file.name
+    const filepath = this.path+"/"+filename
+    const uploadTask = this.storage.upload(filepath,file)
+    const storageRef = this.storage.ref(filepath)
 
     uploadTask.snapshotChanges().pipe(
       finalize(()=>{
